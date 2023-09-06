@@ -1,3 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@500&family=Trocchi&display=swap');
+
+:root {
+    --salmon: #d64d55;
+    --dark-red: #960f16;
+    --light-blue: #94c8d6;
+    --mid-blue: #35838d;
+    --dark-blue: #012e33;
+}
+
 body {
-    color: red;
+    font-family: 'Trocchi', 'Lora', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: var(--light-blue, lightblue);
+    background: black;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 8fr 1fr;
+    min-height: 100vh;
+}
+
+header {
+    background: var(--dark-red, darkred);
+    padding: 0.7rem;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.sidebar {
+    background: var(--salmon, salmon);
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+}
+
+.todo {
+    background: var(--dark-blue, teal);
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--dark-red, darkred);
+}
+
+.author-icon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+a > img {
+    width: 3rem;
 }
