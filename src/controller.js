@@ -19,7 +19,6 @@ function addProject(projectTitle) {
         }
     }
     projects.push(new Project(projectTitle));
-    console.log(projects);
 }
 
 function removeProject(projectTitle){

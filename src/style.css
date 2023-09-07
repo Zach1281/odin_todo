@@ -90,7 +90,7 @@ header {
     margin: 0.5rem;
 }
 
-.active {
+#active {
     background: var(--stone-700);
 }
 

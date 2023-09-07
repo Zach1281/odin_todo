@@ -1,10 +1,8 @@
 import './style.css';
-import sidebar from './sidebar';
-import todoPanel from './todoPanel';
+import sidebar from './events';
 
 export default function siteInit() {
     const main = document.querySelector('.content');
     sidebar();
-    todoPanel();
     return main;
 }
