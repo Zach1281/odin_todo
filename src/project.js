@@ -3,27 +3,27 @@ import todo from './todo';
 export default class Project {
     constructor(title = "", description = ""){
         this.title = title;
-        this.description = description;
-        this.todos = [];
+        this.description = description
+        this.todoList = [];
     }
     
-    get title() {
+    getTitle() {
         return this.title;
     }
 
-    get description() {
+    getDescription() {
         return this.description;
     }
 
-    set title(title = "") {
+    setTitle(title = "") {
         this.title = title;
     }
 
-    set description(description = ""){
+    setDescription(description = ""){
         this.description = description;
     }
 
-    addTodo = (todo) => {
-        this.todos.push(todo);
+    addTodo = (todoTitle) => {
+        this.todoList.push(todo(todoTitle));
     }
 }

@@ -69,9 +69,40 @@ header {
     text-align: center;
 }
 
+.projects {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.project {
+    padding: 0.2rem 0.5rem;
+}
+
+.add-project-title {
+    text-align: center;
+}
+
 .divider {
     border-top: 1px var(--stone-200) solid;
     margin: 0.5rem;
+}
+
+.active {
+    background: var(--stone-700);
+}
+
+#input-active {
+    visibility: hidden;
+}
+
+input {
+    color: var(--stone-100);
+    background: var(--stone-700);
+    border: none;
+    border-radius: 15px;
 }
 
 .btn {
