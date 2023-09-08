@@ -141,3 +141,18 @@ footer {
 a > img {
     width: 3rem;
 }
+
+.todo-panel {
+    padding: 2rem;
+}
+
+.title-desc {
+    border: 1px var(--stone-100) solid;
+    padding: 1rem;
+}
+
+.project-title {
+    border: 1px var(--stone-100) solid;
+    font-size: 2rem;
+    font-weight: 600;
+}

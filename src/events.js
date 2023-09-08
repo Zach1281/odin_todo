@@ -1,18 +1,21 @@
-import control from './controller';
 import { addProject, getProjects } from './controller';
+
 
 export default function sidebarInit() {
     const projects = document.querySelector('.projects');
 
     const defaultProject = document.createElement('div');
     defaultProject.classList.add('project', 'btn');
-    defaultProject.dataset.title = 'new-project';
+    defaultProject.dataset.title = 'New Project';
     defaultProject.textContent = 'New Project';
     defaultProject.id = 'active';
+    addProject('New Project');
     defaultProject.addEventListener('click', () => {
         toggleActive(defaultProject);
+        addContentToTodoPanel();
     })
     projects.appendChild(defaultProject);
+    addContentToTodoPanel();
     addProjectButton();
 }
 
@@ -36,6 +39,7 @@ function addProjectToSidebar(title) {
     // active id and also swap out the todo-panel with the correct project and it's details
     newProject.addEventListener('click', () => {
         toggleActive(newProject);
+        addContentToTodoPanel();
     });
     return newProject;
 }
@@ -67,6 +71,7 @@ function addTextBox(button) {
             textBox.remove();
             addProject(textBox.value);
             projects.appendChild(addProjectToSidebar(textBox.value));
+            addContentToTodoPanel();
             button.id = "";
         }
         if(event.key === 'Escape'){
@@ -75,4 +80,45 @@ function addTextBox(button) {
         }
     });
     return textBox;
+}
+
+// we want to populate the panel with the correct project todos when we click the
+// corresponding project button on the project panel
+function addContentToTodoPanel() {
+    const todoPanel = document.querySelector('.todo-panel');  
+    
+    
+    let projects = getProjects();
+    let foundIndex = null;
+    const activeProject = document.getElementById('active');
+
+    for(let i = 0; i < projects.length; i++){
+        if(projects[i].getTitle() === activeProject.dataset.title){
+            foundIndex = i;
+        }
+    }
+    if(foundIndex === null){
+        alert('this should not happen');
+        return;
+    }
+    let todoList = projects[foundIndex].getList();
+    todoPanel.appendChild(addProjectTitleDesc(projects[foundIndex]));
+    for(let i = 0; i < todoList.length; i++){
+        
+    }
+    
+}
+
+function addProjectTitleDesc(project){
+    const projectInfoContainer = document.querySelector('.title-desc');
+    const projTitle = document.querySelector('.project-title');
+    const projDesc = document.querySelector('.project-desc');
+
+    projTitle.textContent = project.getTitle();
+    projDesc.textContent = project.getDescription();
+
+    projectInfoContainer.appendChild(projTitle);
+    projectInfoContainer.appendChild(projDesc);
+
+    return projectInfoContainer;
 }

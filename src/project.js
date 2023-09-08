@@ -15,6 +15,10 @@ export default class Project {
         return this.description;
     }
 
+    getList() {
+        return this.todoList;
+    }
+
     setTitle(title = "") {
         this.title = title;
     }
