@@ -31,8 +31,14 @@ function removeProject(projectTitle){
     alert('Project does not exist');
 }
 
-function getProjects() {
-    return projects;
+function getProject() {
+    const activeProject = document.getElementById('active');
+    for(let i = 0; i < projects.length; i++){
+        if(projects[i].getTitle() === activeProject.dataset.title){
+            return projects[i];
+        }
+    }
+    alert('this project does not exist');
 }
 
-export { addProject, removeProject, getProjects };
+export { addProject, removeProject, getProject };

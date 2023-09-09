@@ -147,12 +147,16 @@ a > img {
 }
 
 .title-desc {
-    border: 1px var(--stone-100) solid;
     padding: 1rem;
+    background: var(--stone-600);
+    border-radius: 15px;
 }
 
 .project-title {
-    border: 1px var(--stone-100) solid;
     font-size: 2rem;
     font-weight: 600;
+}
+
+.project-desc {
+    font-size: 0.5rem;
 }

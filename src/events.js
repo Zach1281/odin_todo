@@ -1,4 +1,4 @@
-import { addProject, getProjects } from './controller';
+import { addProject, getProject } from './controller';
 
 
 export default function sidebarInit() {
@@ -17,12 +17,26 @@ export default function sidebarInit() {
     projects.appendChild(defaultProject);
     addContentToTodoPanel();
     addProjectButton();
+    addTodoButton();
 }
 
 function toggleActive(projectToBeActive) {
     const currentlyActive = document.getElementById('active');
     currentlyActive.id = '';
     projectToBeActive.id = 'active';
+}
+
+function addTodoButton() {
+    const todoPanel = document.querySelector('.todo-panel');
+    const todoContainer = document.querySelector('.todo-container');
+    const btn = document.createElement('div');
+    btn.classList.add('add-todo-button', 'btn');
+    btn.innerHTML = "<p><span id='plus-icon'>+</span>Add To-Do</p>";
+    btn.addEventListener('click', () => {
+        projects.appendChild(addTextBox(btn));
+        btn.id = "input-active";
+    });
+    addProject.appendChild(btn);
 }
 
 // when someone enters in a new project, it should be added to the projects tab
@@ -86,27 +100,35 @@ function addTextBox(button) {
 // corresponding project button on the project panel
 function addContentToTodoPanel() {
     const todoPanel = document.querySelector('.todo-panel');  
-    
-    
-    let projects = getProjects();
-    let foundIndex = null;
-    const activeProject = document.getElementById('active');
+    const project = getProject();
 
-    for(let i = 0; i < projects.length; i++){
-        if(projects[i].getTitle() === activeProject.dataset.title){
-            foundIndex = i;
-        }
-    }
-    if(foundIndex === null){
-        alert('this should not happen');
-        return;
-    }
-    let todoList = projects[foundIndex].getList();
-    todoPanel.appendChild(addProjectTitleDesc(projects[foundIndex]));
+    let todoList = project.getList();
+    todoPanel.appendChild(addProjectTitleDesc(project));
+    const todosContainer = document.createElement('div');
     for(let i = 0; i < todoList.length; i++){
-        
+        const todoContainer = document.createElement('div');
+        const title = document.createElement('div');
+        title.classList.add('todo-title');
+        const desc = document.createElement('div');
+        desc.classList.add('todo-desc');
+        const isDone = document.createElement('input');
+        isDone.id = 'isDone-' + i;
+        isDone.type = "checkbox";
+        isDone.classList.add('todo-isdone');
+        const isDoneLabel = document.createElement('label');
+        isDoneLabel.setAttribute('for', 'idDone-' + i);
+
+        title.textContent = todoList.getTitle();
+        desc.textContent = todoList.getDescription();
+        isDoneLabel.textContent = "Complete?";
+
+        todoContainer.appendChild(title);
+        todoContainer.appendChild(desc);
+        todoContainer.appendChild(isDone);
+        todoContainer.appendChild(isDoneLabel);
+        todosContainer.appendChild(todoContainer);
     }
-    
+    todoPanel.appendChild(todosContainer);
 }
 
 function addProjectTitleDesc(project){
@@ -122,3 +144,4 @@ function addProjectTitleDesc(project){
 
     return projectInfoContainer;
 }
+

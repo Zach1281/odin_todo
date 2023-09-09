@@ -6,23 +6,35 @@ export default class Todo {
         this.isDone = isDone;
     }
 
-    title() {
+    getTitle() {
         return this.title;
     }
 
-    description() {
+    getDescription() {
         return this.description;
     }
 
-    priority() {
+    getPriority() {
         return this.priority;
     }
 
-    isDone() {
+    getIsDone() {
         return this.isDone;
     }
 
-    isDone(isDone = true) {
+    setIsDone(isDone) {
         this.isDone = isDone;
+    }
+
+    setTitle(title){
+        this.title = title;
+    }
+
+    setDescription(description){
+        this.description = description;
+    }
+
+    setPriority(priority){
+        this.priority = priority;
     }
 }
