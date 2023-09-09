@@ -39,6 +39,10 @@ function addTodoButton() {
     addProject.appendChild(btn);
 }
 
+function addTodo(button){
+    
+}
+
 // when someone enters in a new project, it should be added to the projects tab
 // it should also then be the one focused on the todo-panel
 function addProjectToSidebar(title) {
