@@ -1,4 +1,4 @@
-import todo from './todo';
+import Todo from './todo';
 
 export default class Project {
     constructor(title = "", description = ""){
@@ -27,7 +27,7 @@ export default class Project {
         this.description = description;
     }
 
-    addTodo = (todoTitle) => {
-        this.todoList.push(todo(todoTitle));
+    addTodo = (todoTitle, todoDesc, todoIsDone, todoPriority) => {
+        this.todoList.push(new Todo(todoTitle, todoDesc, todoIsDone, todoPriority));
     }
 }

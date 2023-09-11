@@ -21,7 +21,17 @@ function addProject(projectTitle) {
     projects.push(new Project(projectTitle));
 }
 
-function removeProject(projectTitle){
+function addTodoToProject(projectTitle, todoTitle, todoDesc, todoIsDone, todoPriority) {
+    for(let i = 0; i < projects.length; i++){
+        if(projectTitle === projects[i].getTitle()){
+            console.log('gotcha');
+            projects[i].addTodo(todoTitle, todoDesc, todoIsDone, todoPriority);
+            return;
+        }
+    }
+}
+
+function removeProject(projectTitle) {
     for(let i = 0; i < projects.length; i++){
         if(projects[i].title() === projectTitle){
             projects[i] === null;
@@ -41,4 +51,4 @@ function getProject() {
     alert('this project does not exist');
 }
 
-export { addProject, removeProject, getProject };
+export { addProject, removeProject, getProject, addTodoToProject };
