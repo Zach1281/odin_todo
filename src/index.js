@@ -5,3 +5,5 @@ function siteInit() {
 }
 
 siteInit();
+
+// check if it works
